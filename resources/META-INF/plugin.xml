@@ -1,0 +1,47 @@
+<idea-plugin>
+  <id>com.github.gustavorodrig.decodetool</id>
+  <name>Plugin Decode Tool for Base64, Gzip, Privates decode method</name>
+  <version>1.0</version>
+  <vendor email="gustavo.rodrigues@msn.com" url="https://github.com/gustavorodrig">Gustavo</vendor>
+
+  <description><![CDATA[
+      Tool for decode Base64, Gzip or private
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+     Initial Realse<br>
+     - Decode base64<br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <action id="decodeTool.OpenPopupAction" class="com.github.gustavorodrig.decodetool.action.OpenPopUpAction" text="Decode Tool" description="">
+      <add-to-group group-id="MainMenu" anchor="after" relative-to-action="ToolsMenu"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt HOME"/>
+    </action>
+
+    <group id="decodeTool.OpenPopupMenu" text="Decode Tool" description="">
+      <action id="decodeTool.OpenPopupAction" class="com.github.gustavorodrig.decodetool.action.OpenPopUpAction" text="Decode Tool" description=""/>
+      <separator/>
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+    </group>
+
+  </actions>
+
+</idea-plugin>
