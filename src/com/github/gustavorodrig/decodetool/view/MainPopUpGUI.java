@@ -1,19 +1,21 @@
 package com.github.gustavorodrig.decodetool.view;
 
-import com.github.gustavorodrig.decodetool.util.DecodeUtil;
-import com.github.gustavorodrig.decodetool.util.SystemUtil;
+import com.github.gustavorodrig.decodetool.DecodeType;
+import com.github.gustavorodrig.decodetool.service.DecodeService;
+import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;
 import java.awt.event.*;
 
-public class MainPopUp extends JDialog {
+public class MainPopUpGUI extends JDialog {
     private JPanel contentPane;
     private JButton buttonCancel;
     private JButton decodeButton;
     private JTextArea textArea;
     private JCheckBox copyToClipboardCheckBox;
+    private JComboBox decodeMethod;
 
-    public MainPopUp() {
+    public MainPopUpGUI() {
         setContentPane(contentPane);
         setTitle("Decode Tool");
         setSize(900,500);
@@ -52,8 +54,10 @@ public class MainPopUp extends JDialog {
 
     private void onDecrypt() {
         String text = textArea.getText();
-        String textDecoded = DecodeUtil.decodeBase64(text);
-        SystemUtil.copyToClipBoard(textDecoded);
+        String decodeMethod = this.decodeMethod.getSelectedItem().toString();
+
+        DecodeService service = new DecodeService();
+        String textDecoded = service.decode(text, DecodeType.getByValue(decodeMethod), copyToClipboardCheckBox.isSelected());
         textArea.setText(textDecoded);
     }
 
@@ -62,10 +66,15 @@ public class MainPopUp extends JDialog {
     }
 
     public static void main(String[] args) {
-        MainPopUp dialog = new MainPopUp();
+        MainPopUpGUI dialog = new MainPopUpGUI();
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
     }
 
+    public void setSavedDecodeMethod(String value){
+        if(StringUtils.isNotEmpty(value)) {
+            this.decodeMethod.setSelectedItem(value);
+        }
+    }
 }

@@ -1,19 +1,22 @@
 <idea-plugin>
   <id>com.github.gustavorodrig.decodetool</id>
-  <name>Plugin Decode Tool for Base64, Gzip, Privates decode method</name>
+  <name>Plugin Decode Tool for Base64, Gzip and Http request</name>
   <version>1.0</version>
   <vendor email="gustavo.rodrigues@msn.com" url="https://github.com/gustavorodrig">Gustavo</vendor>
 
   <description><![CDATA[
-      Tool for decode Base64, Gzip or private
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Tool for decode Base64, Gzip or Private Method using Http Get Request<br>
     ]]></description>
 
   <change-notes><![CDATA[
-     Initial Realse<br>
-     - Decode base64<br>
-      <em>most HTML tags may be used</em>
+     <p>version 1.0</p>
+     <ul>
+     <li>Decode base64</li>
+     <li>Decode GZip</li>
+     <li>Decode Using Http Request</li>
+     <li>Settings Configuration</br>
+     <li>Copy to Clipboard</li>
+     </ul>
     ]]>
   </change-notes>
 
@@ -27,7 +30,8 @@
   -->
 
   <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
+    <applicationConfigurable groupId="tools" displayName="Decode Tool" id="preference.DecodeSettingsConfigurable" instance="com.github.gustavorodrig.decodetool.configuration.DecodeSettingsConfigurable" />
+    <applicationService serviceInterface="com.github.gustavorodrig.decodetool.persistence.DecodeToolPersistance" serviceImplementation="com.github.gustavorodrig.decodetool.persistence.DecodeToolPersistance"/>
   </extensions>
 
   <actions>
