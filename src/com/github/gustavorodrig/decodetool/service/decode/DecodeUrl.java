@@ -10,6 +10,7 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Objects;
 
 public class DecodeUrl implements Decode {
 
@@ -18,12 +19,11 @@ public class DecodeUrl implements Decode {
 
         CloseableHttpClient client = HttpClients.createDefault();
 
-        String url = DecodeToolPersistance.getInstance().getUrl();
+        String url = Objects.requireNonNull(DecodeToolPersistance.getInstance()).getUrl();
 
         HttpGet getRequest = new HttpGet(new URIBuilder(url).build().toString() + (url.endsWith("/") ? "" : "/") + text);
         CloseableHttpResponse response = client.execute(getRequest);
-        String decodedText = EntityUtils.toString(response.getEntity());
-        return decodedText;
+        return EntityUtils.toString(response.getEntity());
 
     }
 }

@@ -31,8 +31,7 @@ public class DecodeToolPersistance implements PersistentStateComponent<DecodeToo
 
     @Nullable
     public static DecodeToolPersistance getInstance() {
-        DecodeToolPersistance service = ServiceManager.getService(DecodeToolPersistance.class);
-        return service;
+        return ServiceManager.getService(DecodeToolPersistance.class);
     }
 
     public String getUrl() {

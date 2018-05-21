@@ -1,23 +1,21 @@
 package com.github.gustavorodrig.decodetool.service.decode;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Base64;
 import java.util.zip.GZIPInputStream;
 
 public class DecodeGzip implements Decode {
 
     @Override
     public String decode(String text) throws IOException {
-
-            GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(text.getBytes()));
-            BufferedReader bf = new BufferedReader(new InputStreamReader(gis, "UTF-8"));
-            String outStr = "";
-            String line;
-            while (( line  =bf.readLine())!=null) {
-                outStr += line;
+        byte[] decode = Base64.getUrlDecoder().decode(text);
+        try (InputStream inStream = new GZIPInputStream(new ByteArrayInputStream(decode)); ByteArrayOutputStream outStream = new ByteArrayOutputStream()) {
+            byte[] buffer = new byte[8192];
+            int len;
+            while ((len = inStream.read(buffer)) > 0) {
+                outStream.write(buffer, 0, len);
             }
-            return outStr;
+            return outStream.toString("UTF-8");
+        }
     }
 }
