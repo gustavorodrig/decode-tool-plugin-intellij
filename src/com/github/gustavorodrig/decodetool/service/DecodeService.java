@@ -1,6 +1,6 @@
 package com.github.gustavorodrig.decodetool.service;
 
-import com.github.gustavorodrig.decodetool.DecodeType;
+import com.github.gustavorodrig.decodetool.model.DecodeType;
 import com.github.gustavorodrig.decodetool.service.decode.DecodeFactory;
 import com.github.gustavorodrig.decodetool.service.decode.Decode;
 import com.github.gustavorodrig.decodetool.util.SystemUtil;

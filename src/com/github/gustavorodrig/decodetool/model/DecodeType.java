@@ -1,4 +1,4 @@
-package com.github.gustavorodrig.decodetool;
+package com.github.gustavorodrig.decodetool.model;
 
 public enum DecodeType {
 

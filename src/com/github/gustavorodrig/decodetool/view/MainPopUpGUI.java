@@ -1,6 +1,6 @@
 package com.github.gustavorodrig.decodetool.view;
 
-import com.github.gustavorodrig.decodetool.DecodeType;
+import com.github.gustavorodrig.decodetool.model.DecodeType;
 import com.github.gustavorodrig.decodetool.service.DecodeService;
 import org.apache.commons.lang.StringUtils;
 

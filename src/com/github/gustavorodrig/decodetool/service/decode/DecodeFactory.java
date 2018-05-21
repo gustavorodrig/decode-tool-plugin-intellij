@@ -1,6 +1,6 @@
 package com.github.gustavorodrig.decodetool.service.decode;
 
-import com.github.gustavorodrig.decodetool.DecodeType;
+import com.github.gustavorodrig.decodetool.model.DecodeType;
 
 import java.util.HashMap;
 import java.util.Map;
